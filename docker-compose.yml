@@ -1,0 +1,15 @@
+services:
+  receipt-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: receipt-processor:latest
+    container_name: receipt-processor
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    environment:
+      - GO_ENV=development
+      - PORT=8080
+    restart: unless-stopped
